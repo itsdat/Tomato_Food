@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+:root{
+  --color-text: #49557e;
+  --color-primary: #ff6347;
+  --color-hover: #fff4f2;
+  --color-title: #262626;
+  --color-lable: #747474;
+  --color-border: #e2e2e2;
+  --color-desc: #676767;
+
+}
+
+*{
+  font-family: Outfit;
+  scroll-behavior: smooth;
+
+  h1{
+    font-size: 2rem;
+  }
+}
+
+body{
+  min-height: 100vh;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.animate-fade{
+  animation: fadeIn 3s;
+} 
+
+.animate-fade-fast{
+  animation: fadeIn 1s;
+} 
+
+.animate-fade-modal{
+  animation: fadeIn 0.5s;
+}
+
+.animate-page{
+  animation: animation 0.5s;
+}
+
+@keyframes fadeIn {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes animation {
+  0%{
+    transform: scale(0.9);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+.order-input {
+  @apply mb-3.75 w-full p-2.5 border border-[#c5c5c5] rounded-sm focus-visible:outline-1 focus-visible:border-(--color-primary) outline-(--color-primary);
+}

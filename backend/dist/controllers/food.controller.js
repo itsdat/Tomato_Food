@@ -1,0 +1,44 @@
+import { foodService } from '../services/food.service.js';
+export const FoodController = {
+    async create(req, res) {
+        try {
+            const image_filename = req.file?.filename;
+            if (!image_filename) {
+                return res.status(400).json({ success: false, message: "Image is required" });
+            }
+            const newFood = await foodService.create(image_filename, req.body);
+            res.status(201).json({
+                success: true,
+                message: "Food created successfully",
+                data: newFood
+            });
+        }
+        catch (error) {
+            if (error.name === "ValidationError") {
+                const messages = Object.values(error.errors).map((val) => val.message);
+                return res.status(400).json({
+                    success: false,
+                    message: messages[0]
+                });
+            }
+            console.error(error);
+            res.status(500).json({ success: false, message: "Error creating food" });
+        }
+    },
+    async findALl(req, res) {
+        const foods = await foodService.findAll();
+        res.status(200).json({
+            success: true,
+            message: "Success",
+            data: foods
+        });
+    },
+    async delete(req, res) {
+        await foodService.delete(req.params.id);
+        res.status(200).json({
+            success: true,
+            message: "Food deleted successfully",
+        });
+    }
+};
+//# sourceMappingURL=food.controller.js.map
