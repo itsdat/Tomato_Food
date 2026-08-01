@@ -1,7 +1,6 @@
 import { assets } from "../../../../../assets";
 import type { IFood } from "../../../../../interfaces/food.interface";
 import { useStore } from "../../../../../context/StoreContext";
-import { IMAGE_URL } from "../../../../../constants/api.constant";
 import { toast } from "react-toastify";
 
 export default function FoodItem({ item }: { item: IFood }) {
