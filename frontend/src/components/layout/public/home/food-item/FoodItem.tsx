@@ -2,9 +2,18 @@ import { assets } from "../../../../../assets";
 import type { IFood } from "../../../../../interfaces/food.interface";
 import { useStore } from "../../../../../context/StoreContext";
 import { IMAGE_URL } from "../../../../../constants/api.constant";
+import { toast } from "react-toastify";
 
 export default function FoodItem({ item }: { item: IFood }) {
-  const { cartItems, addToCart, removeFromCart } = useStore();
+  const { cartItems, addToCart, removeFromCart, token } = useStore();
+
+  const handleAddToCart = () => {
+    if (!token) {
+      toast.warning("Please login to add items to cart.");
+      return;
+    }
+    addToCart(item._id);
+  };
 
   return (
     <div className="w-full mx-auto rounded-[15px] shadow-lg transition-all duration-300 animate-fade-fast">
@@ -19,7 +28,7 @@ export default function FoodItem({ item }: { item: IFood }) {
             src={assets.add_icon_white}
             alt="add_btn"
             className="w-8.75 absolute bottom-3.75 right-3.75 cursor-pointer rounded-full"
-            onClick={() => addToCart(item._id)}
+            onClick={handleAddToCart}
           />
         ) : (
           <div className="absolute bottom-3.75 right-3.75 flex items-center gap-2.5 p-1.5 rounded-full bg-white">
@@ -46,7 +55,9 @@ export default function FoodItem({ item }: { item: IFood }) {
           <img src={assets.rating_starts} alt="rating" className="w-17.5" />
         </div>
 
-        <p className="text-(--color-desc) text-[12px] line-clamp-3">{item.description}</p>
+        <p className="text-(--color-desc) text-[12px] line-clamp-3">
+          {item.description}
+        </p>
         <p className="text-(--color-primary) text-[22px] font-medium mt-2.5">
           ${item.price}
         </p>
