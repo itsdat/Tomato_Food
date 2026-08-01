@@ -6,4 +6,5 @@ export interface IFood extends ICommon {
     price: number;
     description: string;
     category: string;
+    imagePublicId?: string;
 }

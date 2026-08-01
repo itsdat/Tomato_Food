@@ -19,7 +19,7 @@ export default function FoodItem({ item }: { item: IFood }) {
     <div className="w-full mx-auto rounded-[15px] shadow-lg transition-all duration-300 animate-fade-fast">
       <div className="w-full rounded-[15px] relative">
         <img
-          src={`${IMAGE_URL}/${item.image}`}
+          src={`${item.image}`}
           alt={item.name}
           className="w-full rounded-t-[15px] aspect-[1/0.7] object-cover"
         />

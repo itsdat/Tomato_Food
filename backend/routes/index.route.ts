@@ -1,18 +1,23 @@
-import express from 'express'
-import { FoodController } from '../controllers/food.controller.js';
-import { UserController } from '../controllers/user.controller.js';
-import { resizeImage, upload } from '../utils/utils.js';
-import { CartController } from '../controllers/cart.controller.js';
-import authMiddleware from '../middlewares/auth.middleware.js';
-import { OrderController } from '../controllers/order.controller.js';
-import { AdminController } from '../controllers/admin.controller.js';
+import express from "express";
+import { FoodController } from "../controllers/food.controller.js";
+import { UserController } from "../controllers/user.controller.js";
+import { resizeAndUploadImage, upload } from "../utils/utils.js";
+import { CartController } from "../controllers/cart.controller.js";
+import authMiddleware from "../middlewares/auth.middleware.js";
+import { OrderController } from "../controllers/order.controller.js";
+import { AdminController } from "../controllers/admin.controller.js";
 
 const router = express.Router();
 
 // Food Router
-router.post("/food/create", upload.single('image'), resizeImage, FoodController.create)
-router.get("/food/find-all", FoodController.findALl)
-router.delete("/food/delete/:id", FoodController.delete)
+router.post(
+  "/food/create",
+  upload.single("image"),
+  resizeAndUploadImage,
+  FoodController.create,
+);
+router.get("/food/find-all", FoodController.findALl);
+router.delete("/food/delete/:id", FoodController.delete);
 
 // User Router
 router.post("/user/login", UserController.login);
@@ -31,6 +36,5 @@ router.post("/order/update", OrderController.update);
 
 // Admin Router
 router.post("/admin/login", AdminController.login);
-
 
 export default router;

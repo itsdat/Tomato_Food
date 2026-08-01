@@ -6,4 +6,5 @@ export interface IFood extends Document {
   price: number;
   image: string;
   category: string;
+  imagePublicId?: string; 
 }
