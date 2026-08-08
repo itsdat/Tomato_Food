@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { API_URL } from "../../../constants/api.constant";
 
 export default function OrderPage() {
-  const { getTotalCartAmount, token, food_list, cartItems } = useStore();
+  const { getTotalCartAmount, token, food_list, cartItems, setCartItems } = useStore();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const key = searchParams.get("session");
@@ -54,6 +54,7 @@ export default function OrderPage() {
       });
 
       if (response.data.success) {
+        setCartItems({});
         toast.success(response.data.message);
         navigate("/my-orders");
       } else {
