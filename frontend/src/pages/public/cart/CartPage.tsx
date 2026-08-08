@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../../../context/StoreContext";
-import { IMAGE_URL } from "../../../constants/api.constant";
 import { secretRandomKey } from "../../../utils/utils";
 
 export default function CartPage() {
@@ -37,7 +36,7 @@ export default function CartPage() {
                   <div key={index}>
                     <div className="grid grid-cols-[1fr_1.5fr_1fr_1fr_1fr_0.5fr] items-center text-[max(1vw,12px)] my-2.5 text-black">
                       <img
-                        src={`${IMAGE_URL}/${item.image}`}
+                        src={`${item.image}`}
                         alt="img"
                         className="w-12.5 aspect-square object-cover"
                       />
