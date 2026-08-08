@@ -1,5 +1,4 @@
 import { assets } from "../../../assets";
-import { IMAGE_URL } from "../../../constants/api.constant";
 import { useStore } from "../../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
 
@@ -46,7 +45,7 @@ export default function MyOrders() {
                         className="flex items-center gap-1.5 bg-gray-50 px-2 py-1 rounded-md border border-gray-100"
                       >
                         <img
-                          src={`${IMAGE_URL}/${item.image}`}
+                          src={`${item.image}`}
                           alt={item.name}
                           className="w-6 h-6 object-cover rounded-full shadow-sm"
                         />
